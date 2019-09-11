@@ -6,38 +6,54 @@ $routes = explode("/", $uri);
 $dbhandle = new PDO("sqlite:basicdatabase.db") or die("Failed to open DB");
 if (!$dbhandle) die ($error);
 
-function readall(){ echo "read allhere";};
-function readone($id){ echo "read onehere ".$id;};
-function createone(){ echo "create onehere";};
-function updateone($id){ echo "update onehere ".$id;};
-function deleteone($id){ echo "delete onehere ".$id;};
+function readall(){ 
+    $query = "SELECT value FROM numbers";
+    $statement = $dbhandle->prepare($query);
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+};
+function readone($id){
+    $query = "SELECT value FROM numbers where id=:id";
+    $query->bindParam(':id', $id);
+    $statement = $dbhandle->prepare($query);
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+};
+function createone(){ return "create onehere";};
+function updateone($id){ return "update onehere ".$id;};
+function deleteone($id){ return "delete onehere ".$id;};
+
+$results = "Usage: GET /number[/:id], POST /number, PUT /number/:id, DELETE /number/:id";
 
 if ($routes[1] == "number"){
   if ($verb == "GET"){
     if (count($routes) < 3){
-      readall();
+      $results = readall();
     } else {
-      readone($routes[2]);
+      $results = readone($routes[2]);
     }
   }
   if ($verb == "POST"){
-    createone();
+    $results = createone();
   }
   if ($verb == "PUT"){
     if (count($routes) < 3){
-      echo "Usage: PUT /number/:id";
+      $results = "Usage: PUT /number/:id";
     } else {
-      updateone($routes[2]);
+      $results = updateone($routes[2]);
     }
   }
   if ($verb == "DELETE"){
     if (count($routes) < 3){
-      echo "Usage: DELETE /number/:id";
+      $results = "Usage: DELETE /number/:id";
     } else {
-      deleteone($routes[2]);
+      $results = deleteone($routes[2]);
     }
   }
-} else {
-  echo "Usage: GET /number[/:id], POST /number, PUT /number/:id, DELETE /number/:id";
-}
+} 
+
+header('HTTP/1.1 200 OK');
+header('Content-Type: application/json');
+echo json_encode($results);
+
 ?>
