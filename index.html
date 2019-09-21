@@ -10,13 +10,13 @@
   </head>
   <body>
     <h1>Spot The Bingo</h1>
-    <button id="grabmore">Fetch 10 Bingos</button>
+    <button id="grabmore">GET 10 Bingos</button>
     <ul id="bingos">
     </ul>
   </body>
   <script>
     $(document).ready(function(){
-      
+
       let showRacks = function(racks){
         $("#bingos").html('');
         racks.map(rack=>{
@@ -26,7 +26,7 @@
           $(evt.currentTarget).find(".answer").toggleClass("hidden");
         });
       }
-      
+
       $("#grabmore").on("click", function(){
         $.ajax({
             method: "GET",
