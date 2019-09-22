@@ -20,7 +20,6 @@
 </button>
 
 <script>
-  var transfered = localStorage["transfer"];
   var input;
   var score = 0; // variable for score keeping
   var wrongCount = 0; //tracks how many incorrect words
@@ -31,10 +30,6 @@
   var accuracy; //tracks percentage of words correct
   var words = ["vestibular", "cataracts", "bazooka", "semiaquatic", "voodoo", "autocorrelation", "conjunctivitis", "smarmy", "continuum", "azimuth", "appendix", "barometer"];
   var rand = words[Math.floor(Math.random() * words.length)];
-
-  window.onload = function() {
-    word.innerText = localStorage["transfer"];
-  }
 
   document.getElementById("startButton").addEventListener('click', function(){
     rand = words[Math.floor(Math.random() * words.length)];

@@ -11,29 +11,17 @@
 
   <body>
     <h1>Gator's Text Game</h1>
-<<<<<<< HEAD
-
-=======
-    <input type='text' onkeypress='checkEnterClick(event)' id='testText'>
-    </input>
->>>>>>> 52c92e7515d7d668b866989e9478cfeb571cf04e
     <button id="gamepageNav"> START GAME </button>
     <ul id="bingos">
     </ul>
   </body>
 
   <script>
-    var localStorage["transfer"];
 
     document.getElementById("gamepageNav").addEventListener('click', function(){
       window.location.href = "gamepage.html";
     });
-
-    function checkEnterClick(e){
-     if(e.keyCode == 13){
-       localStorage["transfer"] = e.target.value;
-      }
-    }
+    
   </script>
 
 </html>
