@@ -28,7 +28,7 @@
 
       document.getElementById("getWord").addEventListener('click', function(){
         let showWord = function(racks){
-          word.innerText = racks.words[0];
+          word.innerText = racks.map(rack=>{rack.rack});
         }
         $.ajax({
             method: "GET",
