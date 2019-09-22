@@ -8,13 +8,20 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
   </head>
+
   <body>
     <h1>Spot The Bingo</h1>
     <button id="grabmore">GET 10 Bingos</button>
+    <button id="gamepageNav"> START GAME </button>
     <ul id="bingos">
     </ul>
   </body>
+
   <script>
+    function goToGame(){
+      window.location.href = "gamepage.html";
+    }
+
     $(document).ready(function(){
 
       let showRacks = function(racks){
@@ -34,6 +41,8 @@
             success: data=>{ showRacks(data)}
         });
       });
+
+      $("#gamepageNav").on("click", goToGame());
     });
   </script>
 </html>
