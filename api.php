@@ -8,7 +8,7 @@
     //the limit 0, 10 takes the first 10 results.
     // you might want to consider taking more results, implementing "pagination",
     // ordering by rank, etc.
-    $query = "SELECT rack, words FROM racks WHERE length=7 and weight <= 10 order by random() limit 0, 1";
+    $query = "SELECT rack, words FROM racks WHERE length=5 and weight <= 10 order by random() limit 0, 1";
 
     //this next line could actually be used to provide user_given input to the query to
     //avoid SQL injection attacks
@@ -21,6 +21,25 @@
     //this will naturally create a pleasant array of JSON data when I echo in a couple lines
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     $results = $results[0];
+    $rackCombos = $combinations($results.rack);
+
+    $combinations = new Func(function($string = null) {
+      $result = new Arr();
+      $loop = new Func(function($start = null, $depth = null, $prefix = null) use (&$string, &$loop, &$result) {
+        for ($i = $start; $i < get($string, "length"); $i++) {
+          $next = _plus($prefix, get($string, $i));
+          if ($depth > 0.0) {
+            call($loop, _plus($i, 1.0), to_number($depth) - 1.0, $next);
+          } else {
+            call_method($result, "push", $next);
+          }
+        }
+      });
+      for ($i = 0.0; $i < get($string, "length"); $i++) {
+        call($loop, 0.0, $i, "");
+      }
+      return $result;
+    });
 
     //this part is perhaps overkill but I wanted to set the HTTP headers and status code
     //making to this line means everything was great with this request
@@ -28,6 +47,6 @@
     //this lets the browser know to expect json
     header('Content-Type: application/json');
     //this creates json and gives it back to the browser
-    echo json_encode($results);
+    echo json_encode($rackCombos);
 
 ?>
