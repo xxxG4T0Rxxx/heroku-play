@@ -12,9 +12,9 @@
   <body>
     <h1>Gator's Text Game</h1>
     <h2 id = "word"> WORD HERE </h2>
+    <h3 id = "grams"> GRAMS HERE </h3>
     <button id="gamepageNav"> START GAME </button>
-    <button id="getWord"> GET WORD </button>
-    <button id="wordGrams"> GET GRAMS </button>
+    <button id="getGrams"> GET GRAMS </button>
     <button id="grabmore">Fetch 10 Bingos</button>
     <ul id="bingos">
     </ul>
@@ -27,15 +27,16 @@
       window.location.href = "gamepage.html";
     });
 
-    document.getElementById("getWord").addEventListener('click', function(){
+    document.getElementById("getGrams").addEventListener('click', function(){
       $.ajax({
           method: "GET",
           url: "api.php",
           success: data=>{ rackwords = data}
       });
 
-      word.innerText = rackwords.words;
+      word.innerText = rackwords.rack;
     });
+
 
     $(document).ready(function(){
 
