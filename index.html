@@ -11,6 +11,7 @@
 
   <body>
     <h1>Gator's Text Game</h1>
+    <h2 id = "word"> WORD HERE </h2>
     <button id="gamepageNav"> START GAME </button>
     <button id="getWord"> GET WORD </button>
     <button id="wordGrams"> GET GRAMS </button>
@@ -21,8 +22,20 @@
 
   <script>
 
+    var bigWord;
     document.getElementById("gamepageNav").addEventListener('click', function(){
       window.location.href = "gamepage.html";
+
+      document.getElementById("getWord").addEventListener('click', function(){
+        let showWord = function(racks){
+          word.innerText = racks;
+        }
+        $.ajax({
+            method: "GET",
+            url: "api.php",
+            success: data=>{ showWord(data)}
+        });
+      });
 
       $(document).ready(function(){
 
