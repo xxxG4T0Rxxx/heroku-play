@@ -20,8 +20,8 @@
     //I chose to get associative arrays inside of a big array
     //this will naturally create a pleasant array of JSON data when I echo in a couple lines
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-    //$results = $results[0];
-    $rackCombos = Array($combinations($results[0].rack));
+    $results = $results[0];
+    $rackCombos = array($combinations($results.rack));
 
     $combinations = new Func(function($string = null) {
       $result = new Arr();
@@ -47,6 +47,5 @@
     //this lets the browser know to expect json
     header('Content-Type: application/json');
     //this creates json and gives it back to the browser
-    echo $rackCombos;
-
+    echo json_encode($rackcombos);
 ?>
