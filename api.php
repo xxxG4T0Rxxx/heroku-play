@@ -1,5 +1,8 @@
 <?php
 
+    ini_set('display_errors', 1);
+    ini_set('displau_startup_errors', 1);
+    error_reporting(E_ALL);
     //this is the basic way of getting a database handler from PDO, PHP's built in quasi-ORM
     $dbhandle = new PDO("sqlite:scrabble.sqlite") or die("Failed to open DB");
     if (!$dbhandle) die ($error);
@@ -21,25 +24,25 @@
     //this will naturally create a pleasant array of JSON data when I echo in a couple lines
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     $results = $results[0];
-    // $rackCombos = array($combinations($results.rack));
-    //
-    // $combinations = new Func(function($string = null) {
-    //   $result = new Arr();
-    //   $loop = new Func(function($start = null, $depth = null, $prefix = null) use (&$string, &$loop, &$result) {
-    //     for ($i = $start; $i < get($string, "length"); $i++) {
-    //       $next = _plus($prefix, get($string, $i));
-    //       if ($depth > 0.0) {
-    //         call($loop, _plus($i, 1.0), to_number($depth) - 1.0, $next);
-    //       } else {
-    //         call_method($result, "push", $next);
-    //       }
-    //     }
-    //   });
-    //   for ($i = 0.0; $i < get($string, "length"); $i++) {
-    //     call($loop, 0.0, $i, "");
-    //   }
-    //   return $result;
-    // });
+    $rackCombos = array($combinations($results.rack));
+
+    $combinations = new Func(function($string = null) {
+      $result = new Arr();
+      $loop = new Func(function($start = null, $depth = null, $prefix = null) use (&$string, &$loop, &$result) {
+        for ($i = $start; $i < get($string, "length"); $i++) {
+          $next = _plus($prefix, get($string, $i));
+          if ($depth > 0.0) {
+            call($loop, _plus($i, 1.0), to_number($depth) - 1.0, $next);
+          } else {
+            call_method($result, "push", $next);
+          }
+        }
+      });
+      for ($i = 0.0; $i < get($string, "length"); $i++) {
+        call($loop, 0.0, $i, "");
+      }
+      return $result;
+    });
 
     //this part is perhaps overkill but I wanted to set the HTTP headers and status code
     //making to this line means everything was great with this request
