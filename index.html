@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <style>
@@ -36,4 +36,136 @@
       });
     });
   </script>
+</html> -->
+<html>
+  <head>
+    <script>
+      var input;
+      var score = 0; // variable for score keeping
+      var wrongCount = 0; //tracks how many incorrect words
+      var wordCount = 0; //tracks how many words you attempt to type
+      var multiplier = 1; //tracks score multiplier
+      var highestMult = 1; //tracks highest multiplier
+      var correct = 0; //variable for whether your input is correct, default incorrect
+      var accuracy; //tracks percentage of words correct
+      var words = ["vestibular", "cataracts", "bazooka", "semiaquatic", "voodoo", "autocorrelation", "conjunctivitis", "smarmy", "continuum", "azimuth", "appendix", "barometer"];
+      var rand = words[Math.floor(Math.random() * words.length)];
+
+      document.getElementById("startButton").addEventListener('click', function(){
+        rand = words[Math.floor(Math.random() * words.length)];
+        word.innerText = rand;
+        timerInit();
+        startButton.innerText = "RESTART"
+      });
+
+      function getNewWord(){
+        rand = words[Math.floor(Math.random() * words.length)];
+        word.innerText = rand; //change header to input
+      }
+
+      function clearText(){
+        document.getElementById('test').value = "";
+      }
+
+      function updateScore(){
+      switch (correct) {
+        case 0:
+          // execute case for incorrect word
+          wrongCount ++;
+          multiplier = 1;
+          break;
+        case 1:
+          // execute case for correct
+          wordCount ++;
+          score += 100*multiplier;
+          multiplier = multiplier + 0.1;
+          if (multiplier > highestMult){ highestMult = Math.round( multiplier * 10 ) / 10}
+          break;
+        default:
+            // execute default code block
+
+      }
+      }
+
+      function checkEnterClick(e){
+       input = e.target.value;
+       if(e.keyCode == 13){
+         if (e.target.value == rand){
+           correct = 1;
+           updateScore();
+           alert(" Looks like you typed: " + input +"\n Your Score is: " + score + "\n Your multiplier is : " + Math.round( multiplier * 10 ) / 10);
+           getNewWord();
+           clearText();
+         }
+         else{
+           correct = 0;
+           updateScore();
+           alert(" Looks like you typed: " + input + "\n That is wrong.");
+           clearText();
+         }
+       }
+      }
+
+      function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        //display.value = display.defaultValue;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = duration;
+              endGame();
+            }
+        }, 1000);
+      }
+
+      function timerInit () {
+        var totalTime = 60 * 1,
+            display = document.querySelector('#timeleft');
+        startTimer(totalTime, display);
+      };
+
+      function endGame(){
+      if (wordCount == 0){
+        score = "Garbage"
+        accuracy = "Piss Poor"
+        alert("Time is up! " + "\n Your Final Score: " + score + "\n Dude at least try next time" + highestMult + "\n Accuracy: " + accuracy);
+      }
+      else{
+        accuracy = (wordCount - wrongCount) / wordCount;
+      alert("Time is up! " + "\n Your Final Score: " + score + "\n Highest multiplier: " + highestMult + "\n Accuracy: " + accuracy);
+      }
+      score = 0;
+      wrongCount = 0;
+      wordCount = 0;
+      multiplier = 1;
+      highestMult= 1;
+      correct = 0;
+      timeLeft.value = timeLeft.defaultValue;
+      }
+    </script>
+  </head>
+
+  <h1 id='word' type ='text'> Typing Game Boogaloo </h1>
+
+<body>
+    <div id = "timertext">    Remaining Time: <span id="timeleft"> 01:00</span> minutes!</div>
+</body>
+
+<label for = "text"> Are you Ready?
+</label>
+
+<input type='text' onkeypress='checkEnterClick(event)' id='test'>
+</input>
+
+<button id="startButton">
+  START
+</button>
+
 </html>
