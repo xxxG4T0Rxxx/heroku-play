@@ -47,5 +47,5 @@
     //this lets the browser know to expect json
     header('Content-Type: application/json');
     //this creates json and gives it back to the browser
-    echo json_encode($rackcombos);
+    echo json_encode($results);
 ?>
