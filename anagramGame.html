@@ -36,21 +36,7 @@
     function getNewWord(){
       $.ajax({
           method: "GET",
-          url: "api.php",
-          success: data =>{ dataFull = data}
-      });
-      getRack = dataFull.rack;
-      getWords = dataFull.words;
-      wordArray = getWords.split("@@");
-      if (getRack == null){word.innerText = "Press Button Again";}
-      word.innerText = getRack;
-      wordCount ++;
-    }
-
-    function skipWord(){
-      $.ajax({
-          method: "GET",
-          url: "api.php",
+          url: "api2.php",
           success: data =>{ dataFull = data}
       });
       getRack = dataFull.rack;
@@ -110,6 +96,7 @@
         alert("Time is up! " + "\n Your Final Score: " + score + "\n Dude at least try next time" + highestMult + "\n Accuracy: " + accuracy);
       }
       else{
+        score = score - skipCount*50;
         accuracy = (wordCount - wrongCount) / wordCount;
       alert("Time is up! " + "\n Your Final Score: " + score + "\n Skips: " + skipCount + "\n Accuracy: " + accuracy);
       }
