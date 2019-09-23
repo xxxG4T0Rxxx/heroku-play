@@ -32,7 +32,7 @@
     rand = words[Math.floor(Math.random() * words.length)];
     word.innerText = rand;
     timerInit();
-    startButton.innerText = "RESTART"
+    startButton.innerText = ""
   }
 
   function getNewWord(){
@@ -97,7 +97,6 @@
 
         if (--timer < 0)
           endGame();
-          window.location.href = "index.html";
         }
     }, 1000);
   }
@@ -124,7 +123,7 @@
   multiplier = 1;
   highestMult= 1;
   correct = 0;
-  timeLeft.value = timeLeft.defaultValue;
+  window.location.href = "/";
   }
 
   window.onload = startPage();

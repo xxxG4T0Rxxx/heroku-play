@@ -77,7 +77,6 @@
           display.textContent = minutes + ":" + seconds;
 
           if (--timer < 0) {
-            window.location.href = "/";
             endGame();
 
           }
@@ -105,7 +104,7 @@
       wrongCount = 0;
       wordCount = 0;
       skipCount = 0;
-      timeLeft.value = timeLeft.defaultValue;
+      window.location.href = "/";
     }
 
     window.onload = timerInit();
