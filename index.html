@@ -10,20 +10,19 @@
   </head>
 
   <body>
-    <h1>Gator's Text Game</h1>
-    <h2 id = "word"> WORD HERE </h2>
-    <h3 id = "grams"> GRAMS HERE </h3>
-    <button id="gamepageNav"> START GAME </button>
-    <button id="getGrams"> GET GRAMS </button>
-    <button id="grabmore">Fetch 10 Bingos</button>
-    <ul id="bingos">
-    </ul>
+    <h1>Gator's Games</h1>
+    <button id="typingGame"> PLAY TYPING GAME </button>
+    <button id="twistGame"> PLAY "TEXT TWIST" </button>
   </body>
 
   <script>
 
     var rackwords;
-    document.getElementById("gamepageNav").addEventListener('click', function(){
+    document.getElementById("typingGame").addEventListener('click', function(){
+      window.location.href = "typingGamePage.html";
+    });
+
+    document.getElementById("twistGame").addEventListener('click', function(){
       window.location.href = "gamepage.html";
     });
 

@@ -26,23 +26,23 @@
     $results = $results[0];
     $rackCombos = array($combinations($results.rack));
 
-    $combinations = new Func(function($string = null) {
-      $result = new Arr();
-      $loop = new Func(function($start = null, $depth = null, $prefix = null) use (&$string, &$loop, &$result) {
-        for ($i = $start; $i < get($string, "length"); $i++) {
-          $next = _plus($prefix, get($string, $i));
-          if ($depth > 0.0) {
-            call($loop, _plus($i, 1.0), to_number($depth) - 1.0, $next);
-          } else {
-            call_method($result, "push", $next);
-          }
-        }
-      });
-      for ($i = 0.0; $i < get($string, "length"); $i++) {
-        call($loop, 0.0, $i, "");
-      }
-      return $result;
-    });
+    // $combinations = new Func(function($string = null) {
+    //   $result = new Arr();
+    //   $loop = new Func(function($start = null, $depth = null, $prefix = null) use (&$string, &$loop, &$result) {
+    //     for ($i = $start; $i < get($string, "length"); $i++) {
+    //       $next = _plus($prefix, get($string, $i));
+    //       if ($depth > 0.0) {
+    //         call($loop, _plus($i, 1.0), to_number($depth) - 1.0, $next);
+    //       } else {
+    //         call_method($result, "push", $next);
+    //       }
+    //     }
+    //   });
+    //   for ($i = 0.0; $i < get($string, "length"); $i++) {
+    //     call($loop, 0.0, $i, "");
+    //   }
+    //   return $result;
+    // });
 
     //this part is perhaps overkill but I wanted to set the HTTP headers and status code
     //making to this line means everything was great with this request
