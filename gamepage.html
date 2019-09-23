@@ -72,10 +72,13 @@
     function getAllWords(){
       for (var i =0; i < stringCombos.length; i++){
         alert(stringCombos[i]);
-        sendString = '{"word":'+'"'+stringCombos[i]+'"'+'}';
-        alert("sending: " +sendString);
+        //sendString = '{"word":'+'"'+stringCombos[i]+'"'+'}';
+        var jason = '{ "word" : ["' +stringCombos[i]+'"]}';
+        var obj = JSON.parse(text);
+        alert("sending: " + jason);
+        alert("JSON:" + obj);
         $.post("api_dynamic.php",sendString, data => {testVal = data});
-        alert(testVal.rack);
+        alert("test:"+testVal.rack);
       }
     }
 
