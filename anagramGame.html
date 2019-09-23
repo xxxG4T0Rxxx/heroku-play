@@ -97,8 +97,9 @@
       }
       else{
         score = score - skipCount*50;
-        accuracy = (wordCount - wrongCount) / wordCount;
-      alert("Time is up! " + "\n Your Final Score: " + score + "\n Skips: " + skipCount + "\n Accuracy: " + accuracy);
+        accuracy = 100*(wordCount - wrongCount) / wordCount;
+        if (accuracy < 0.2){ accuracy = "BAD"};
+      alert("Time is up! " + "\n Your Final Score: " + score + "\n Accuracy: " + accuracy + "%");
       }
       score = 0;
       wrongCount = 0;
