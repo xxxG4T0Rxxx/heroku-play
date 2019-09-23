@@ -23,8 +23,17 @@
     var getRack = "";
     var getWords = "";
     var wordArray = "";
+    var wordCount = 0;
+    var skipCount = -1;
+    var wrongCount = 0;
+    var score = 0;
+    var skipSet = 0;
 
     document.getElementById("getGrams").addEventListener('click', function(){
+      getNewWord();
+    });
+
+    function getNewWord(){
       $.ajax({
           method: "GET",
           url: "api.php",
@@ -35,16 +44,35 @@
       wordArray = getWords.split("@@");
       if (getRack == null){word.innerText = "Press Button Again";}
       word.innerText = getRack;
-    });
+      wordCount ++;
+    }
+
+    function skipWord(){
+      $.ajax({
+          method: "GET",
+          url: "api.php",
+          success: data =>{ dataFull = data}
+      });
+      getRack = dataFull.rack;
+      getWords = dataFull.words;
+      wordArray = getWords.split("@@");
+      if (getRack == null){word.innerText = "Press Button Again";}
+      word.innerText = getRack;
+      wordCount ++;
+      skipCount ++;
+    }
 
     function checkEnterClick(e){
       input = e.target.value;
       if(e.keyCode == 13){
         if(wordArray.includes(input)){
-          alert("ITS THE FUCKING SAME");
+          alert("NICE! You got some points.");
+          getNewWord();
+          score+=1000;
         }
         else{
-          alert("INCORRECT! CORRECT IS:" + getRack +"/nWords are: " + wordArray);
+          alert("That's Not a Word!!1!");
+          wrongCount ++;
         }
         document.getElementById('userIn').value = "";
       }
@@ -70,27 +98,25 @@
     }
 
     function timerInit () {
-      var totalTime = 60 * 2, //2 minute timer
+      var totalTime = 60 * 0.5, //2 minute timer
           display = document.querySelector('#timeleft');
       startTimer(totalTime, display);
     };
 
     function endGame(){
-      if (wordCount == 0){
+      if (wordCount <= 1){
         score = "Garbage"
         accuracy = "Piss Poor"
         alert("Time is up! " + "\n Your Final Score: " + score + "\n Dude at least try next time" + highestMult + "\n Accuracy: " + accuracy);
       }
       else{
         accuracy = (wordCount - wrongCount) / wordCount;
-      alert("Time is up! " + "\n Your Final Score: " + score + "\n Highest multiplier: " + highestMult + "\n Accuracy: " + accuracy);
+      alert("Time is up! " + "\n Your Final Score: " + score + "\n Skips: " + skipCount + "\n Accuracy: " + accuracy);
       }
       score = 0;
       wrongCount = 0;
       wordCount = 0;
-      multiplier = 1;
-      highestMult= 1;
-      correct = 0;
+      skipCount = 0;
       timeLeft.value = timeLeft.defaultValue;
     }
 
