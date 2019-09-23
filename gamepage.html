@@ -73,6 +73,7 @@
       for (var i =0; i < stringCombos.length; i++){
         alert(stringCombos[i]);
         sendString = '{"word":'+'"'+stringCombos[i]+'"'+'}';
+        alert("sending: " +sendString);
         $.post("api_dynamic.php",sendString, data => {testVal = data});
         alert(testVal.rack);
       }
