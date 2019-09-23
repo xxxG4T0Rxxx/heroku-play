@@ -24,6 +24,7 @@
     var getWords = "";
     var stringCombos = "";
     var wordArray = "";
+    var testVal = "";
 
     document.getElementById("getGrams").addEventListener('click', function(){
       getNewWord();
@@ -69,6 +70,8 @@
     function getAllWords(){
       for (var i =0; i < stringCombos.length; i++){
         alert(stringCombos[i]);
+        $.post("api_dynamic.php",{"word":stringCombos[i]}, data => {testVal = data});
+        alert(testVal);
       }
     }
 
