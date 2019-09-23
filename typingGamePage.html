@@ -9,11 +9,15 @@
     <div id = "timertext">    Remaining Time: <span id="timeleft"> 01:00</span> minutes!</div>
 </body>
 
-<label for = "text" id = "textlabel"> Type in the Above?
+<label for = "text"> Are you Ready?
 </label>
 
 <input type='text' onkeypress='checkEnterClick(event)' id='test'>
 </input>
+
+<button id="startButton">
+  START
+</button>
 
 <script>
   var input;
@@ -27,12 +31,12 @@
   var words = ["vestibular", "cataracts", "bazooka", "semiaquatic", "voodoo", "autocorrelation", "conjunctivitis", "smarmy", "continuum", "azimuth", "appendix", "barometer"];
   var rand = words[Math.floor(Math.random() * words.length)];
 
-
-  function startPage(){
+  document.getElementById("startButton").addEventListener('click', function(){
     rand = words[Math.floor(Math.random() * words.length)];
     word.innerText = rand;
     timerInit();
-  }
+    startButton.innerText = "RESTART"
+  });
 
   function getNewWord(){
     rand = words[Math.floor(Math.random() * words.length)];
@@ -94,7 +98,8 @@
 
         display.textContent = minutes + ":" + seconds;
 
-        if (--timer < 0)
+        if (--timer < 0) {
+            timer = duration;
           endGame();
         }
     }, 1000);
@@ -122,11 +127,8 @@
   multiplier = 1;
   highestMult= 1;
   correct = 0;
-  window.location.href = "/";
+  timeLeft.value = timeLeft.defaultValue;
   }
-
-  window.onload = startPage();
-
 </script>
 
 </html>
