@@ -42,8 +42,8 @@
       if (getRack == null){word.innerText = "Press Button Again";}
       word.innerText = getRack;
       stringCombos = combinations(getRack);
-      //alert("full json: "+ dataFull.rack);
       getAllWords();
+      alert("json rack: " + dataFull.rack);
       //alert("COMBOS: "+stringCombos);
     }
 
@@ -70,9 +70,9 @@
 
     function getAllWords(){
       for (var i =0; i < stringCombos.length; i++){
-        alert("Sending:"+stringCombos[i]);
+        alert(stringCombos[i]);
         $.post("api_dynamic.php",{"word":stringCombos[i]}, data => {testVal = data});
-        alert("Received Rack: "testVal.rack);
+        alert(testVal);
       }
     }
 
