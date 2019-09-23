@@ -53,5 +53,5 @@
     //this lets the browser know to expect json
     header('Content-Type: application/json');
     //this creates json and gives it back to the browser
-    echo json_encode($test);
+    echo json_encode($results);
 ?>
