@@ -17,18 +17,16 @@
   </body>
 
   <script>
-
-    var rackwords;
     var input;
+    var getRack
 
     document.getElementById("getGrams").addEventListener('click', function(){
       $.ajax({
           method: "GET",
           url: "api.php",
-          success: data =>{ rackwords = data}
+          success: data =>{ getRack = data.rack}
       });
-
-      word.innerText = rackwords.rack;
+      getRack = rackwords.rack;
     });
 
     function checkEnterClick(e){
