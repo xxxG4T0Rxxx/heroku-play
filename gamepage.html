@@ -22,12 +22,17 @@
     var dataFull ="";
     var getRack = "";
     var getWords = "";
+    var stringCombos = "";
     var wordArray = "";
 
     document.getElementById("getGrams").addEventListener('click', function(){
+      getNewWord();
+    });
+
+    function getNewWord(){
       $.ajax({
           method: "GET",
-          url: "api.php",
+          url: "api2.php",
           success: data =>{ dataFull = data}
       });
       getRack = dataFull.rack;
@@ -35,7 +40,34 @@
       wordArray = getWords.split("@@");
       if (getRack == null){word.innerText = "Press Button Again";}
       word.innerText = getRack;
-    });
+      stringCombos = combinations(getRack);
+      alert(stringCombos);
+    }
+
+    var combinations = function (string)
+     {
+        var result = [];
+        var loop = function (start,depth,prefix)
+        {
+          for(var i=start; i<string.length; i++)
+          {
+              var next = prefix+string[i];
+              if (depth > 0)
+                  loop(i+1,depth-1,next);
+              else
+                  result.push(next);
+          }
+        }
+      for(var i=0; i<string.length; i++)
+      {
+        loop(0,i,'');
+      }
+    return result;
+    }
+
+    function getAllWords(){
+
+    }
 
     function checkEnterClick(e){
       input = e.target.value;
