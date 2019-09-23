@@ -10,10 +10,11 @@
   </head>
 
   <body>
-    <h1>Gator's Games</h1>
+    <h1>Gator's Games - Attempt at Text Twist</h1>
     <h2 id = "word"> GRAM HERE </h2>
     <button id="getGrams"> GET GRAMS </button>
     <input id = "userIn" type='text' onkeypress='checkEnterClick(event)'> </input>
+    <div id = "timertext">    Remaining Time: <span id="timeleft"> 01:00</span> minutes!</div>
   </body>
 
   <script>
@@ -49,6 +50,51 @@
       }
     }
 
+    function startTimer(duration, display) {
+      var timer = duration, minutes, seconds;
+      //display.value = display.defaultValue;
+      setInterval(function () {
+          minutes = parseInt(timer / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          display.textContent = minutes + ":" + seconds;
+
+          if (--timer < 0) {
+              timer = duration;
+            endGame();
+          }
+      }, 1000);
+    }
+
+    function timerInit () {
+      var totalTime = 60 * 2, //2 minute timer
+          display = document.querySelector('#timeleft');
+      startTimer(totalTime, display);
+    };
+
+    function endGame(){
+      if (wordCount == 0){
+        score = "Garbage"
+        accuracy = "Piss Poor"
+        alert("Time is up! " + "\n Your Final Score: " + score + "\n Dude at least try next time" + highestMult + "\n Accuracy: " + accuracy);
+      }
+      else{
+        accuracy = (wordCount - wrongCount) / wordCount;
+      alert("Time is up! " + "\n Your Final Score: " + score + "\n Highest multiplier: " + highestMult + "\n Accuracy: " + accuracy);
+      }
+      score = 0;
+      wrongCount = 0;
+      wordCount = 0;
+      multiplier = 1;
+      highestMult= 1;
+      correct = 0;
+      timeLeft.value = timeLeft.defaultValue;
+    }
+
+    window.onload = startTimer();
 
   </script>
 
