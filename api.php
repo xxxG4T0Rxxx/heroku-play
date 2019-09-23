@@ -24,8 +24,8 @@
     //this will naturally create a pleasant array of JSON data when I echo in a couple lines
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     $results = $results[0];
-    $rackCombos = array($combinations($results.rack));
-
+    // $rackCombos = array($combinations($results.rack));
+    //
     // $combinations = new Func(function($string = null) {
     //   $result = new Arr();
     //   $loop = new Func(function($start = null, $depth = null, $prefix = null) use (&$string, &$loop, &$result) {
