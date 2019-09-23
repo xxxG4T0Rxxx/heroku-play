@@ -18,22 +18,18 @@
 
   <script>
 
-    var getrack;
-    var getwords;
-    var wordArray;
+    var rackwords;
+
 
     document.getElementById("getGrams").addEventListener('click', function(){
       $.ajax({
           method: "GET",
           url: "api.php",
-          success: data =>{ getrack = data}
+          success: data =>{ rackwords = data}
       });
-      getwords= = getrack.words;
-      getrack = getrack.rack;
-      //wordArray= getwords.split("@@");
-      word.innerText = getrack;
-    });
 
+      word.innerText = rackwords.rack;
+    });
 
     function checkEnterClick(e){
       input = e.target.value;
