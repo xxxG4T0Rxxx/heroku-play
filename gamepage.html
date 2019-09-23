@@ -18,8 +18,8 @@
 
   <script>
     var input;
-    var dataFull;
-    var getRack;
+    var dataFull ="";
+    var getRack = "";
 
     document.getElementById("getGrams").addEventListener('click', function(){
       $.ajax({
@@ -34,11 +34,11 @@
     function checkEnterClick(e){
       input = e.target.value;
       if(e.keyCode == 13){
-        if(input == rackwords.rack){
+        if(input == getRack){
           alert("ITS THE FUCKING SAME");
         }
         else{
-          alert("INCORRECT! CORRECT IS:" + rackwords.rack);
+          alert("INCORRECT! CORRECT IS:" + getRack);
         }
       }
     }
