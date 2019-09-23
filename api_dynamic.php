@@ -29,7 +29,7 @@
     //I chose to get associative arrays inside of a big array
     //this will naturally create a pleasant array of JSON data when I echo in a couple lines
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-    $results = $results[0];
+    $results = $results[1];
     // $rackCombos = array($combinations($results.rack));
     //
     // $combinations = new Func(function($string = null) {
