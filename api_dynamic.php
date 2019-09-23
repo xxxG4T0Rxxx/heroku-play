@@ -18,7 +18,7 @@
     // ordering by rank, etc.
     //$query = "'".'SELECT rack, words FROM racks WHERE rack='.$rackback."'";
     //$query = 'SELECT rack, words FROM racks WHERE rack="AENORST"';
-    $query = "SELECT rack, words FROM racks WHERE length=5 and weight <= 10 order by random() limit 0, 1";
+    $query = "SELECT rack, words FROM racks WHERE length=5 and weight <= 10 order by random() limit 0";
     //this next line could actually be used to provide user_given input to the query to
     //avoid SQL injection attacks
     $statement = $dbhandle->prepare($query);
@@ -29,7 +29,7 @@
     //I chose to get associative arrays inside of a big array
     //this will naturally create a pleasant array of JSON data when I echo in a couple lines
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-    $results = $results[1];
+    //$results = $results[0];
     // $rackCombos = array($combinations($results.rack));
     //
     // $combinations = new Func(function($string = null) {
