@@ -81,9 +81,10 @@
         alert("JSON:" + obj.word);
         //$.post("api_dynamic.php",obj, data => {testVal = data});
         $.ajax({
-            method: "PUT",
+            method: "GET",
             url: "api_dynamic.php",
             data: obj,
+            dataType: "json",
             success: data =>{ testVal = data}
         });
         alert("test:"+testVal.rack);
