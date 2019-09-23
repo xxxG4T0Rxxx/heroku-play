@@ -87,7 +87,9 @@
             // dataType: "json",
             success: data =>{ testVal = data}
         });
-        alert("test:"+testVal.rack);
+        getRack = testVal.rack;
+        getWords = testVal.words;
+        alert("test:"+getRack);
       }
     }
 
