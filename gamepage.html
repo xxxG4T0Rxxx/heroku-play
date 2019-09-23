@@ -72,9 +72,8 @@
     function getAllWords(){
       for (var i =0; i < stringCombos.length; i++){
         alert(stringCombos[i]);
-        sendString = '{"word":'.'"'.stringCombos[i].'"'.'}';
+        sendString = '{"word":'+'"'+stringCombos[i]+'"'+'}';
         $.post("api_dynamic.php",sendString, data => {testVal = data});
-        alert(testVal);
         alert(testVal.rack);
       }
     }
