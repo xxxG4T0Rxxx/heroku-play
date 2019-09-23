@@ -18,15 +18,17 @@
 
   <script>
     var input;
-    var getRack
+    var dataFull;
+    var getRack;
 
     document.getElementById("getGrams").addEventListener('click', function(){
       $.ajax({
           method: "GET",
           url: "api.php",
-          success: data =>{ getRack = data.rack}
+          success: data =>{ dataFull = data}
       });
-      getRack = rackwords.rack;
+      getRack = dataFull.rack;
+      word.innerText = getRack;
     });
 
     function checkEnterClick(e){
