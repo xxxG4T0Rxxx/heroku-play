@@ -20,6 +20,7 @@
     var input;
     var dataFull ="";
     var getRack = "";
+    var getWords = "";
 
     document.getElementById("getGrams").addEventListener('click', function(){
       $.ajax({
@@ -27,10 +28,10 @@
           url: "api.php",
           success: data =>{ dataFull = data}
       });
-      getRack = dataFull.rack
+      getRack = dataFull.rack;
+      getWords = dataFull.words;
       if (getRack == null){word.innerText = "Press Button Again";}
       word.innerText = getRack;
-
     });
 
     function checkEnterClick(e){
@@ -40,7 +41,7 @@
           alert("ITS THE FUCKING SAME");
         }
         else{
-          alert("INCORRECT! CORRECT IS:" + getRack);
+          alert("INCORRECT! CORRECT IS:" + getRack +"/nWords are: " + getWords);
         }
         document.getElementById('userIn').value = "";
       }
