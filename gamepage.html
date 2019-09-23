@@ -81,7 +81,7 @@
         alert("JSON:" + obj);
         //$.post("api_dynamic.php",obj, data => {testVal = data});
         $.ajax({
-            method: "POST",
+            method: "PUT",
             url: "api_dynamic.php",
             success: data =>{ testVal = data}
         });
