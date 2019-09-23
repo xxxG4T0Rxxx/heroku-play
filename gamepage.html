@@ -130,25 +130,20 @@
     };
 
     function endGame(){
-      if (wordCount == 0){
-        score = "Garbage"
-        accuracy = "Piss Poor"
-        alert("Time is up! " + "\n Your Final Score: " + score + "\n Dude at least try next time" + highestMult + "\n Accuracy: " + accuracy);
-      }
-      else{
-        accuracy = (wordCount - wrongCount) / wordCount;
-      alert("Time is up! " + "\n Your Final Score: " + score + "\n Highest multiplier: " + highestMult + "\n Accuracy: " + accuracy);
-      }
-      score = 0;
-      wrongCount = 0;
-      wordCount = 0;
-      multiplier = 1;
-      highestMult= 1;
-      correct = 0;
-      timeLeft.value = timeLeft.defaultValue;
+      // if (wordCount == 0){
+      //   score = "Garbage"
+      //   accuracy = "Piss Poor"
+      //   alert("Time is up! " + "\n Your Final Score: " + score + "\n Dude at least try next time" + highestMult + "\n Accuracy: " + accuracy);
+      // }
+      // else{
+      //   accuracy = (wordCount - wrongCount) / wordCount;
+      // alert("Time is up! " + "\n Your Final Score: " + score + "\n Highest multiplier: " + highestMult + "\n Accuracy: " + accuracy);
+      // }
+      alert("Sorry you had to play this.");
+      window.location.href = "/";
     }
 
-    window.onload = startTimer();
+    window.onload = timerInit();
 
   </script>
 

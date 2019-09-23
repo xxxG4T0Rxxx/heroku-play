@@ -9,7 +9,8 @@
 
     //$test = json_decode($_POST,true);
     //$sword = $test["word"];
-    $rackback = $_POST.word;
+    $_PUT = file_get_contents('php://input');
+    $rackback = $_PUT.word;
 
     //this is a sample query which gets some data, the order by part shuffles the results
     //the limit 0, 10 takes the first 10 results.
