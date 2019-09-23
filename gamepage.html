@@ -79,7 +79,7 @@
         obj = JSON.parse(text);
         alert("sending: " + jason);
         alert("JSON:" + obj);
-        $.post("api_dynamic.php",sendString, data => {testVal = data});
+        $.post("api_dynamic.php",obj, data => {testVal = data});
         alert("test:"+testVal.rack);
       }
     }
