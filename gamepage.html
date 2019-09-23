@@ -21,6 +21,7 @@
     var dataFull ="";
     var getRack = "";
     var getWords = "";
+    var wordArray = "";
 
     document.getElementById("getGrams").addEventListener('click', function(){
       $.ajax({
@@ -30,6 +31,7 @@
       });
       getRack = dataFull.rack;
       getWords = dataFull.words;
+      wordArray = getWords.split("@@");
       if (getRack == null){word.innerText = "Press Button Again";}
       word.innerText = getRack;
     });
@@ -41,7 +43,7 @@
           alert("ITS THE FUCKING SAME");
         }
         else{
-          alert("INCORRECT! CORRECT IS:" + getRack +"/nWords are: " + getWords);
+          alert("INCORRECT! CORRECT IS:" + getRack +"/nWords are: " + wordArray);
         }
         document.getElementById('userIn').value = "";
       }
