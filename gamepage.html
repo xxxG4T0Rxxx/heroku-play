@@ -83,8 +83,8 @@
         $.ajax({
             method: "GET",
             url: "api_dynamic.php",
-            data: obj,
-            dataType: "json",
+            // data: obj,
+            // dataType: "json",
             success: data =>{ testVal = data}
         });
         alert("test:"+testVal.rack);
