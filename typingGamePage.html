@@ -32,7 +32,7 @@
     rand = words[Math.floor(Math.random() * words.length)];
     word.innerText = rand;
     timerInit();
-    startButton.innerText = "";
+    startButton.innerText = ""
   }
 
   function getNewWord(){
@@ -115,7 +115,7 @@
   }
   else{
     accuracy = (wordCount - wrongCount) / wordCount;
-  alert("Time is up! " + "\n Your Final Score: " + score + "\n Highest multiplier: " + highestMult + "\n Accuracy: " + accuracy*100 +"%");
+  alert("Time is up! " + "\n Your Final Score: " + score + "\n Highest multiplier: " + highestMult + "\n Accuracy: " + accuracy);
   }
   score = 0;
   wrongCount = 0;
