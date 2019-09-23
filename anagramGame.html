@@ -84,7 +84,7 @@
     }
 
     function timerInit () {
-      var totalTime = 60 * .25, //2 minute timer
+      var totalTime = 60 * 2, //2 minute timer
           display = document.querySelector('#timeleft');
       startTimer(totalTime, display);
     };
@@ -96,7 +96,7 @@
         alert("Time is up! " + "\n Your Final Score: " + score + "\n Dude at least try next time" + highestMult + "\n Accuracy: " + accuracy);
       }
       else{
-        score = score - skipCount*50;
+        score = score - skipCount*150;
         accuracy = 100*(wordCount - wrongCount) / wordCount;
         if (accuracy < 0.2){ accuracy = "BAD"};
       alert("Time is up! " + "\n Your Final Score: " + score + "\n Accuracy: " + accuracy + "%");
