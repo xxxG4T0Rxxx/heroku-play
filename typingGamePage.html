@@ -106,7 +106,7 @@
   }
 
   function timerInit () {
-    var totalTime = 60 * 1,
+    var totalTime = 60 * 0.25,
         display = document.querySelector('#timeleft');
     startTimer(totalTime, display);
   };
@@ -127,7 +127,7 @@
   multiplier = 1;
   highestMult= 1;
   correct = 0;
-  timeLeft.value = timeLeft.defaultValue;
+  window.location.href = "/";
   }
 </script>
 
