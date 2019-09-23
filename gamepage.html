@@ -72,7 +72,7 @@
       for (var i =0; i < stringCombos.length; i++){
         alert(stringCombos[i]);
         $.post("api_dynamic.php",{"word":stringCombos[i]}, data => {testVal = data});
-        alert(testVal.rack);
+        alert(testVal);
       }
     }
 
