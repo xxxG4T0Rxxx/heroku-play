@@ -75,7 +75,7 @@
       for (var i =0; i < stringCombos.length; i++){
         alert(stringCombos[i]);
         //sendString = '{"word":'+'"'+stringCombos[i]+'"'+'}';
-        jason = '{ "word" : ["' +stringCombos[i]+'"]}';
+        jason = '{ "word" : ' +stringCombos[i]+'}';
         obj = JSON.parse(jason);
         alert("sending: " + jason);
         alert("JSON:" + obj);
