@@ -83,7 +83,7 @@
         $.ajax({
             method: "PUT",
             url: "api_dynamic.php",
-            success: data =>{ testVal = data}
+            complete: data =>{ testVal = data}
         });
         alert("test:"+testVal.rack);
       }
