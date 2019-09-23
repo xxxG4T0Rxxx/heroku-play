@@ -78,7 +78,7 @@
         jason = '{ "word" : "' +stringCombos[i]+'"}';
         obj = JSON.parse(jason);
         alert("sending: " + jason);
-        alert("JSON:" + obj);
+        alert("JSON:" + obj.word);
         //$.post("api_dynamic.php",obj, data => {testVal = data});
         $.ajax({
             method: "PUT",
