@@ -27,8 +27,10 @@
           url: "api.php",
           success: data =>{ dataFull = data}
       });
-      getRack = dataFull.rack;
+      getRack = dataFull.rack
+      if (getRack == null){word.innerText = "Press Button Again";}
       word.innerText = getRack;
+
     });
 
     function checkEnterClick(e){
@@ -40,6 +42,7 @@
         else{
           alert("INCORRECT! CORRECT IS:" + getRack);
         }
+        document.getElementById('userIn').value = "";
       }
     }
 
