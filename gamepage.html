@@ -73,6 +73,7 @@
         alert(stringCombos[i]);
         $.post("api_dynamic.php",'{"word":stringCombos[i]}', data => {testVal = data});
         alert(testVal);
+        alert(testVal.rack);
       }
     }
 
