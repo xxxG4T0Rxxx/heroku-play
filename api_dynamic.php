@@ -8,13 +8,16 @@
     if (!$dbhandle) die ($error);
 
     $test = json_decode($_POST,true);
-    $word = $test["word"];
+    $sword = $test["word"];
+
+    $message = $sword;
+    echo "<script type='text/javascript'>alert('$message');</script>";
 
     //this is a sample query which gets some data, the order by part shuffles the results
     //the limit 0, 10 takes the first 10 results.
     // you might want to consider taking more results, implementing "pagination",
     // ordering by rank, etc.
-    $query = "SELECT rack, words FROM racks WHERE rack="+$word;
+    $query = "SELECT rack, words FROM racks WHERE rack="+$sword;
 
     //this next line could actually be used to provide user_given input to the query to
     //avoid SQL injection attacks
