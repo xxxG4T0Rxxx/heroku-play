@@ -77,8 +77,8 @@
           display.textContent = minutes + ":" + seconds;
 
           if (--timer < 0) {
-              alert("GAMEOVER");
             endGame();
+            window.location.href = "index.html";
           }
       }, 1000);
     }

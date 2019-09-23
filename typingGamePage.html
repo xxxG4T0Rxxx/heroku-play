@@ -15,10 +15,6 @@
 <input type='text' onkeypress='checkEnterClick(event)' id='test'>
 </input>
 
-<button id="startButton">
-  START
-</button>
-
 <script>
   var input;
   var score = 0; // variable for score keeping
@@ -31,12 +27,13 @@
   var words = ["vestibular", "cataracts", "bazooka", "semiaquatic", "voodoo", "autocorrelation", "conjunctivitis", "smarmy", "continuum", "azimuth", "appendix", "barometer"];
   var rand = words[Math.floor(Math.random() * words.length)];
 
-  document.getElementById("startButton").addEventListener('click', function(){
+
+  function startPage(){
     rand = words[Math.floor(Math.random() * words.length)];
     word.innerText = rand;
     timerInit();
     startButton.innerText = "RESTART"
-  });
+  }
 
   function getNewWord(){
     rand = words[Math.floor(Math.random() * words.length)];
@@ -98,9 +95,9 @@
 
         display.textContent = minutes + ":" + seconds;
 
-        if (--timer < 0) {
-            timer = duration;
+        if (--timer < 0)
           endGame();
+          window.location.href = "index.html";
         }
     }, 1000);
   }
@@ -129,6 +126,9 @@
   correct = 0;
   timeLeft.value = timeLeft.defaultValue;
   }
+
+  window.onload = startPage();
+
 </script>
 
 </html>
