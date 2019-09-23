@@ -77,8 +77,9 @@
           display.textContent = minutes + ":" + seconds;
 
           if (--timer < 0) {
-            endGame();
             window.location.href = "/";
+            endGame();
+
           }
       }, 1000);
     }
