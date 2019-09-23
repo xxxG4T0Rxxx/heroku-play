@@ -26,6 +26,8 @@
     var wordArray = "";
     var sendString =''
     var testVal = "";
+    var jason;
+    var obj;
 
     document.getElementById("getGrams").addEventListener('click', function(){
       getNewWord();
@@ -73,8 +75,8 @@
       for (var i =0; i < stringCombos.length; i++){
         alert(stringCombos[i]);
         //sendString = '{"word":'+'"'+stringCombos[i]+'"'+'}';
-        var jason = '{ "word" : ["' +stringCombos[i]+'"]}';
-        var obj = JSON.parse(text);
+        jason = '{ "word" : ["' +stringCombos[i]+'"]}';
+        obj = JSON.parse(text);
         alert("sending: " + jason);
         alert("JSON:" + obj);
         $.post("api_dynamic.php",sendString, data => {testVal = data});
