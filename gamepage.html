@@ -19,7 +19,7 @@
   <script>
 
     var rackwords;
-
+    var input;
 
     document.getElementById("getGrams").addEventListener('click', function(){
       $.ajax({
@@ -34,7 +34,9 @@
     function checkEnterClick(e){
       input = e.target.value;
       if(e.keyCode == 13){
-
+        if(input == rackwords.rack){
+          alert("ITS THE FUCKING SAME")
+        }
       }
     }
 
