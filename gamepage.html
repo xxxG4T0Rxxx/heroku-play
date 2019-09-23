@@ -41,7 +41,8 @@
       if (getRack == null){word.innerText = "Press Button Again";}
       word.innerText = getRack;
       stringCombos = combinations(getRack);
-      alert(stringCombos);
+      getAllWords();
+      //alert("COMBOS: "+stringCombos);
     }
 
     var combinations = function (string)
@@ -66,7 +67,9 @@
     }
 
     function getAllWords(){
-
+      for (var i =0; i < stringCombos.length; i++){
+        alert(i);
+      }
     }
 
     function checkEnterClick(e){
