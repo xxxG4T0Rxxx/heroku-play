@@ -7,7 +7,7 @@
     $dbhandle = new PDO("sqlite:scrabble.sqlite") or die("Failed to open DB");
     if (!$dbhandle) die ($error);
 
-    $test = json_decode($_POST);
+    $test = json_decode($_POST,true);
     $word = $test["word"];
 
     //this is a sample query which gets some data, the order by part shuffles the results
@@ -26,7 +26,7 @@
     //I chose to get associative arrays inside of a big array
     //this will naturally create a pleasant array of JSON data when I echo in a couple lines
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-    $results = $results[0];
+    //$results = $results[0];
     // $rackCombos = array($combinations($results.rack));
     //
     // $combinations = new Func(function($string = null) {
