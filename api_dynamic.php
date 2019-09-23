@@ -7,10 +7,10 @@
     $dbhandle = new PDO("sqlite:scrabble.sqlite") or die("Failed to open DB");
     if (!$dbhandle) die ($error);
 
-    //$test = json_decode($_POST,true);
-    //$sword = $test["word"];
-    $_PUT = file_get_contents('php://input');
-    $rackback = $_PUT.word;
+    $test = json_decode($_POST,true);
+    $sword = $test["word"];
+    //$_PUT = file_get_contents('php://input');
+    //$rackback = $_PUT.word;
 
     //this is a sample query which gets some data, the order by part shuffles the results
     //the limit 0, 10 takes the first 10 results.
