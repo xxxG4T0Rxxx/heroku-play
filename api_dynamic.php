@@ -8,7 +8,7 @@
     if (!$dbhandle) die ($error);
 
     $testRack =json_decode($_POST["word"]);
-    $sword = $test;
+    $sword = $testRack;
 
     //this is a sample query which gets some data, the order by part shuffles the results
     //the limit 0, 10 takes the first 10 results.
