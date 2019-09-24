@@ -81,10 +81,10 @@
         alert("sending: " + jason);
         //alert("JSON:" + obj);
         $.post("api_dynamic.php",obj, data => {testVal = data});
-        // getRack = testVal.rack;
-        // getWords = testVal.words;
-        // alert("retrieved rack: "+getRack+"/n retrieved words:"+getWords);
-        alert("testRack: "+JSON.stringify(testVal));
+        getRack = testVal.rack;
+        getWords = testVal.words;
+        alert("retrieved rack: "+getRack+"/n retrieved words:"+getWords);
+        //alert("testRack: "+testVal);
       }
     }
 
