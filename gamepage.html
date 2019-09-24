@@ -80,7 +80,7 @@
         //obj = JSON.parse(jason);
         alert("sending: " + jason);
         //alert("JSON:" + obj);
-        $.post("api_dynamic.php",obj,data => processRack(data));
+        $.post("api_dynamic.php",jason,data => processRack(data));
 
       }
     }
@@ -89,7 +89,7 @@
       testVal = data;
       getRack = testVal.rack;
       getWords = testVal.words;
-      alert("retrieved rack: "+getRack+"/n retrieved words:"+getWords);
+      alert("retrieved rack: "+getRack+"\n retrieved words:"+getWords);
       alert("testRack: "+testVal);
     }
 
