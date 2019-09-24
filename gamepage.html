@@ -80,12 +80,12 @@
         //obj = JSON.parse(jason);
         alert("sending: " + jason);
         //alert("JSON:" + obj);
-        $.post("api_dynamic.php",obj,data => getRack(data));
+        $.post("api_dynamic.php",obj,data => processRack(data));
 
       }
     }
 
-    function getRack(data){
+    function processRack(data){
       testVal = data;
       getRack = testVal.rack;
       getWords = testVal.words;
