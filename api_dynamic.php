@@ -8,7 +8,6 @@
     if (!$dbhandle) die ($error);
 
     $testRack = $_POST["words"];
-    echo json_encode($testRack);
     $sword = $testRack;
 
     //this is a sample query which gets some data, the order by part shuffles the results
@@ -30,5 +29,5 @@
     //this lets the browser know to expect json
     header('Content-Type: application/json');
     //this creates json and gives it back to the browser
-    //echo json_encode($results);
+    echo json_encode($results);
 ?>
