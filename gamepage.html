@@ -80,16 +80,10 @@
         alert("sending: " + jason);
         alert("JSON:" + obj);
         $.post("api_dynamic.php",obj, data => {testVal = data});
-        // $.ajax({
-        //     method: "POST",
-        //     url: "api_dynamic.php",
-        //     data: obj,
-        //     dataType: "json",
-        //     success: data =>{ testVal = data}
-        // });
-        getRack = testVal.rack;
-        getWords = testVal.words;
-        alert("retrieved rack: "+getRack+"/n retrieved words:"+getWords);
+        // getRack = testVal.rack;
+        // getWords = testVal.words;
+        // alert("retrieved rack: "+getRack+"/n retrieved words:"+getWords);
+        alert("testRack: "+testRack);
       }
     }
 
