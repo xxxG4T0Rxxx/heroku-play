@@ -7,7 +7,7 @@
     $dbhandle = new PDO("sqlite:scrabble.sqlite") or die("Failed to open DB");
     if (!$dbhandle) die ($error);
 
-    $testRack = json_decode($_POST["word"]);
+    $testRack = json_decode($_POST["words"],true);
     $sword = $testRack;
 
     //this is a sample query which gets some data, the order by part shuffles the results

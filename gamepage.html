@@ -75,10 +75,11 @@
       for (var i =0; i < stringCombos.length; i++){
         alert(stringCombos[i]);
         //sendString = '{"word":'+'"'+stringCombos[i]+'"'+'}';
-        jason = '{ "word" : "' +stringCombos[i]+'"}';
-        obj = JSON.parse(jason);
+        //jason = '{ "words" : "' +stringCombos[i]+'"}';
+        jason = {"words":stringCombos[i]};
+        //obj = JSON.parse(jason);
         alert("sending: " + jason);
-        alert("JSON:" + obj);
+        //alert("JSON:" + obj);
         $.post("api_dynamic.php",obj, data => {testVal = data});
         // getRack = testVal.rack;
         // getWords = testVal.words;
