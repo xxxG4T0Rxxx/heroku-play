@@ -7,7 +7,7 @@
     $dbhandle = new PDO("sqlite:scrabble.sqlite") or die("Failed to open DB");
     if (!$dbhandle) die ($error);
 
-    $testRack =json_decode($_POST["words"]);
+    $testRack =json_decode($_POST["word"]);
     // $sword = $test;
     //$_PUT = file_get_contents('php://input');
     //$rackback = $_PUT.word;
