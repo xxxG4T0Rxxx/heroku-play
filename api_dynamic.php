@@ -7,7 +7,7 @@
     $dbhandle = new PDO("sqlite:scrabble.sqlite") or die("Failed to open DB");
     if (!$dbhandle) die ($error);
 
-    $testRack = json_decode($_POST["words"]);
+    $testRack = $_POST["words"];
     echo json_encode($testRack);
     $sword = $testRack;
 
@@ -30,5 +30,5 @@
     //this lets the browser know to expect json
     header('Content-Type: application/json');
     //this creates json and gives it back to the browser
-    echo json_encode($results);
+    //echo json_encode($results);
 ?>
