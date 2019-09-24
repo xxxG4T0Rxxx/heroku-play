@@ -17,7 +17,7 @@
     //$query = "'".'SELECT rack, words FROM racks WHERE rack='.$rackback."'";
     //$query = 'SELECT rack, words FROM racks WHERE rack="AENORST"';
     //$query = "SELECT rack, words FROM racks WHERE length=5 and weight <= 10 order by random() limit 0,1";
-    $query = "SELECT rack,words FROM racks where rack= '$value'";
+    $query = "SELECT rack,words FROM racks where rack= '$sword'";
     //this next line could actually be used to provide user_given input to the query to
     //avoid SQL injection attacks
     $statement = $dbhandle->prepare($query);
