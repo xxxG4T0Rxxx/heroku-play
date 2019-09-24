@@ -79,14 +79,14 @@
         obj = JSON.parse(jason);
         alert("sending: " + jason);
         alert("JSON:" + obj.word);
-        //$.post("api_dynamic.php",obj, data => {testVal = data});
-        $.ajax({
-            method: "POST",
-            url: "api_dynamic.php",
-            data: obj,
-            dataType: "json",
-            success: data =>{ testVal = data}
-        });
+        $.post("api_dynamic.php",obj, data => {testVal = data});
+        // $.ajax({
+        //     method: "POST",
+        //     url: "api_dynamic.php",
+        //     data: obj,
+        //     dataType: "json",
+        //     success: data =>{ testVal = data}
+        // });
         getRack = testVal.rack;
         getWords = testVal.words;
         alert("test:"+getRack);
