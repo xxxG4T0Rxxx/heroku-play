@@ -80,12 +80,17 @@
         //obj = JSON.parse(jason);
         alert("sending: " + jason);
         //alert("JSON:" + obj);
-        $.post("api_dynamic.php",obj, data => {testVal = data});
-        getRack = testVal.rack;
-        getWords = testVal.words;
-        alert("retrieved rack: "+getRack+"/n retrieved words:"+getWords);
-        //alert("testRack: "+testVal);
+        $.post("api_dynamic.php",obj, getRack(data));
+
       }
+    }
+
+    function getRack(data){
+      testVal = data;
+      getRack = testVal.rack;
+      getWords = testVal.words;
+      alert("retrieved rack: "+getRack+"/n retrieved words:"+getWords);
+      alert("testRack: "+testVal);
     }
 
     function checkEnterClick(e){
