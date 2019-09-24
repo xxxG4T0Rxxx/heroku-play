@@ -8,9 +8,7 @@
     if (!$dbhandle) die ($error);
 
     $testRack =json_decode($_POST["word"]);
-    // $sword = $test;
-    //$_PUT = file_get_contents('php://input');
-    //$rackback = $_PUT.word;
+    $sword = $test;
 
     //this is a sample query which gets some data, the order by part shuffles the results
     //the limit 0, 10 takes the first 10 results.
@@ -18,7 +16,8 @@
     // ordering by rank, etc.
     //$query = "'".'SELECT rack, words FROM racks WHERE rack='.$rackback."'";
     //$query = 'SELECT rack, words FROM racks WHERE rack="AENORST"';
-    $query = "SELECT rack, words FROM racks WHERE length=5 and weight <= 10 order by random() limit 0,1";
+    //$query = "SELECT rack, words FROM racks WHERE length=5 and weight <= 10 order by random() limit 0,1";
+    $query = "SELECT rack,words FROM racks where rack= '$value'";
     //this next line could actually be used to provide user_given input to the query to
     //avoid SQL injection attacks
     $statement = $dbhandle->prepare($query);
@@ -28,8 +27,8 @@
     //there are several ways of getting the data out, iterating row by row,
     //I chose to get associative arrays inside of a big array
     //this will naturally create a pleasant array of JSON data when I echo in a couple lines
-    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-    $results = $results[0];
+    $results = $statement->fetch(PDO::FETCH_ASSOC);
+    //$results = $results[0];
     // $rackCombos = array($combinations($results.rack));
     //
     // $combinations = new Func(function($string = null) {
