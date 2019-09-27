@@ -45,9 +45,9 @@
       word.innerText = getRack;
       stringCombos = combinations(getRack);
       getAllWords();
-      alert("json rack: " + dataFull.rack);
+      //alert("json rack: " + dataFull.rack);
       //alert("COMBOS: "+stringCombos);
-      alert("Words Available:" + wordArray);
+      //alert("Words Available:" + wordArray);
     }
 
     var combinations = function (string)
@@ -73,7 +73,7 @@
 
     function getAllWords(){
       for (var i =0; i < stringCombos.length; i++){
-        alert(stringCombos[i]);
+        //alert(stringCombos[i]);
         //jason = '{ "words" : "' +stringCombos[i]+'"}';
         jason = {"words":stringCombos[i]};
         //alert("sending: " + jason);
