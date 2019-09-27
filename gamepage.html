@@ -25,7 +25,7 @@
     var stringCombos = "";
     var wordArray = "";
     var testVal = "";
-    var wordHolder= "";
+    var wordHolder = "";
     var jason;
 
     document.getElementById("getGrams").addEventListener('click', function(){
@@ -78,7 +78,6 @@
         jason = {"words":stringCombos[i]};
         //alert("sending: " + jason);
         $.post("api_dynamic.php",jason,data => processRack(data));
-        wordArray = getWords.split("@@");
       }
     }
 
@@ -88,9 +87,9 @@
       getRack = testVal.rack;
       getWords = testVal.words;
       alert("retrieved rack: "+getRack+"\n retrieved words:"+getWords);
-      if (getWords){
-        wordHolder = wordHolder + "@@"+ getWords;
-      }
+      // if (getWords){
+      //   wordHolder = wordHolder + "@@"+ getWords;
+      // }
       alert("Currently available words:" + wordHolder)
       //alert("testVal: "+testVal);
     }
