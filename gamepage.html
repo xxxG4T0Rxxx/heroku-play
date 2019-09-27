@@ -24,8 +24,8 @@
     var getWords = "";
     var stringCombos = "";
     var wordArray = "";
-    var sendString =''
     var testVal = "";
+    var wordHolder= "";
     var jason;
 
     document.getElementById("getGrams").addEventListener('click', function(){
@@ -74,7 +74,6 @@
     function getAllWords(){
       for (var i =0; i < stringCombos.length; i++){
         alert(stringCombos[i]);
-        //sendString = '{"word":'+'"'+stringCombos[i]+'"'+'}';
         //jason = '{ "words" : "' +stringCombos[i]+'"}';
         jason = {"words":stringCombos[i]};
         //alert("sending: " + jason);
@@ -89,6 +88,7 @@
       getRack = testVal.rack;
       getWords = testVal.words;
       alert("retrieved rack: "+getRack+"\n retrieved words:"+getWords);
+      wordHolder += getWords;
       //alert("testVal: "+testVal);
     }
 
