@@ -40,7 +40,7 @@
       });
       getRack = dataFull.rack;
       getWords += dataFull.words;
-      wordArray = getWords.split("@@");
+      //wordArray = getWords.split("@@");
       if (getRack == null){word.innerText = "Press Button Again";}
       word.innerText = getRack;
       stringCombos = combinations(getRack);
@@ -74,16 +74,19 @@
     function getAllWords(){
       for (var i =0; i < stringCombos.length; i++){
         //alert(stringCombos[i]);
-        //jason = '{ "words" : "' +stringCombos[i]+'"}';
         jason = {"words":stringCombos[i]};
         //alert("sending: " + jason);
         $.post("api_dynamic.php",jason,data => processRack(data));
+        wordArray = getWords.split("@@");
       }
     }
 
     function processRack(data){
       //alert("Entering processRack()");
       testVal = data;
+      if(testVal.Rack){
+        alert("There's a value for this");
+      }
       getRack = testVal.rack;
       getWords = testVal.words;
       if(getRack){
