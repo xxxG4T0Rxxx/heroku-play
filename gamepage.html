@@ -86,7 +86,12 @@
       testVal = data;
       getRack = testVal.rack;
       getWords = testVal.words;
-      alert("retrieved rack: "+getRack+"\n retrieved words:"+getWords);
+      if(getRack){
+        alert("retrieved rack: "+getRack+"\n retrieved words:"+getWords);
+      }
+      else{
+        alert("No rack for this guy")
+      }
       // if (getWords){
       //   wordHolder = wordHolder + "@@"+ getWords;
       // }
