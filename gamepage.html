@@ -40,7 +40,7 @@
           success: data =>{ dataFull = data}
       });
       getRack = dataFull.rack;
-      getWords = dataFull.words;
+      getWords += dataFull.words;
       wordArray = getWords.split("@@");
       if (getRack == null){word.innerText = "Press Button Again";}
       word.innerText = getRack;
@@ -77,12 +77,10 @@
         //sendString = '{"word":'+'"'+stringCombos[i]+'"'+'}';
         //jason = '{ "words" : "' +stringCombos[i]+'"}';
         jason = {"words":stringCombos[i]};
-        //obj = JSON.parse(jason);
-        alert("sending: " + jason);
-        //alert("JSON:" + obj);
+        //alert("sending: " + jason);
         $.post("api_dynamic.php",jason,data => processRack(data));
-
       }
+      wordArray = getWords.split("@@");
     }
 
     function processRack(data){
