@@ -27,7 +27,6 @@
     var sendString =''
     var testVal = "";
     var jason;
-    var obj;
 
     document.getElementById("getGrams").addEventListener('click', function(){
       getNewWord();
@@ -48,6 +47,7 @@
       getAllWords();
       alert("json rack: " + dataFull.rack);
       //alert("COMBOS: "+stringCombos);
+      alert("Words Available:" + wordArray);
     }
 
     var combinations = function (string)
@@ -79,8 +79,8 @@
         jason = {"words":stringCombos[i]};
         //alert("sending: " + jason);
         $.post("api_dynamic.php",jason,data => processRack(data));
+        wordArray = getWords.split("@@");
       }
-      wordArray = getWords.split("@@");
     }
 
     function processRack(data){
